@@ -98,7 +98,7 @@ Vercel doesn't host databases, so pair it with a free Postgres host (e.g. Neon o
 | --- | --- |
 | `DATABASE_URL` | Postgres connection string used by Prisma. |
 | `SESSION_SECRET` | Long random string signing the admin session cookie. Generate with `openssl rand -hex 32`. |
-| `ADMIN_PASSWORD_HASH` | Bcrypt hash of the admin dashboard password. Generate with `npm run hash-password -- "..."` and paste its output **exactly as printed** — Next.js's env loader expands unescaped `$name` sequences in `.env` values, which silently corrupts a raw bcrypt hash (they start with `$2a$12$...`) and makes login fail with no clear error. The script's output is already escaped correctly. Never store the plain password. |
+| `ADMIN_PASSWORD_HASH` | Bcrypt hash of the admin dashboard password. Never store the plain password. **In a `.env` file** (local dev, Docker): generate with `npm run hash-password -- "..."` and paste its output *exactly as printed*, `\$`-escaped — Next.js's env loader expands unescaped `$name` sequences when it parses a `.env` file, which silently corrupts a raw bcrypt hash (they start with `$2a$12$...`) and makes login fail with no clear error. **In Vercel's dashboard** (or any platform that injects env vars directly, not via a `.env` file): paste the *raw* hash instead, `$` signs unescaped — there's no `.env` file for Next.js to run its expansion on, so an escaped value would be stored with literal backslashes and also fail. |
 | `POSTGRES_PASSWORD` | Only used by `docker-compose.yml` to set the Postgres container's password. |
 
 ## Flipping on the real download
