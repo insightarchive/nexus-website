@@ -11,7 +11,7 @@ export default function AboutPage() {
   return (
     <div className="section">
       <div className="container">
-        <div style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 48 }} className="hero-grid">
+        <div className="hero-grid">
           <div>
             <span className="eyebrow">{t.eyebrow}</span>
             <h1 className="section-title">{t.title}</h1>

@@ -44,7 +44,7 @@ export function Header() {
               বাংলা
             </button>
           </div>
-          <Link href="/#waitlist" className="btn btn-primary">
+          <Link href="/#waitlist" className="btn btn-primary header-cta">
             {t.cta}
           </Link>
           <button
@@ -64,6 +64,9 @@ export function Header() {
               {t[l.key]}
             </Link>
           ))}
+          <Link href="/#waitlist" className="btn btn-primary mobile-nav-cta" onClick={() => setOpen(false)}>
+            {t.cta}
+          </Link>
         </div>
       </div>
     </header>

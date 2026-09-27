@@ -264,6 +264,10 @@ button {
   text-decoration: none;
 }
 
+.mobile-nav-cta {
+  display: none;
+}
+
 @media (max-width: 860px) {
   .main-nav {
     display: none;
@@ -273,6 +277,19 @@ button {
   }
   .mobile-nav[data-open="true"] {
     display: flex;
+  }
+}
+
+/* Below this width the brand, language toggle, header CTA and menu icon
+   no longer all fit on one row (measured overflow at 360-390px) — the
+   CTA moves into the mobile nav dropdown instead of disappearing. */
+@media (max-width: 540px) {
+  .header-cta {
+    display: none;
+  }
+  .mobile-nav-cta {
+    display: flex;
+    margin-top: 10px;
   }
 }
 
